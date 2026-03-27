@@ -1,26 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #1a1a1a;
+  --color-secondary: #4a1d1d; /* Deep Merlot */
+  --color-accent: #c4a484; /* Vintage Parchment/Gold */
+  --color-border: #333333;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --accent: #c4a484;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3, h4, .serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Goth/Vintage Utilities */
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffffff; /* Explicitly white */
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+  opacity: 0.8;
+}
+
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+}
+
+.vintage-border {
+  border: 1px solid rgba(196, 164, 132, 0.2);
+}
+
+.product-card {
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+button.primary {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff; /* Lighter text as requested */
+  padding: 1.2rem 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.primary:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Footer: ornate dark frame background + light text */
+.footer-letter-wrap {
+  position: relative;
+  background-color: #0d0d0d;
+  background-image: url("/footer-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Keep copy inside the decorative border */
+  padding: clamp(3.5rem, 10vw, 7rem) clamp(1.25rem, 7vw, 5rem) clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.footer-letter-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.15) 40%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+.footer-letter-paper {
+  position: relative;
+  z-index: 1;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-letter-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-dark-greeting {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: rgba(232, 228, 220, 0.85);
+}
+
+.footer-dark-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.02em;
+  color: #f5f0e8;
+}
+
+.footer-dark-body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: rgba(212, 206, 196, 0.88);
+}
+
+.footer-dark-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent, #c4a484);
+}
+
+.footer-dark-input {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: rgba(8, 8, 8, 0.45);
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f5f0e8;
+}
+
+.footer-dark-input::placeholder {
+  color: rgba(200, 192, 180, 0.45);
+}
+
+.footer-dark-input:focus {
+  outline: none;
+  border-bottom-color: rgba(196, 164, 132, 0.55);
+  background: rgba(12, 12, 12, 0.55);
+}
+
+.footer-dark-btn {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: rgba(196, 164, 132, 0.22);
+  color: #f5efe6;
+  border: 1px solid rgba(196, 164, 132, 0.45);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+.footer-dark-btn:hover {
+  background: rgba(196, 164, 132, 0.35);
+  color: #fff;
+  border-color: rgba(196, 164, 132, 0.65);
+}
+
+.footer-dark-link {
+  color: rgba(212, 206, 196, 0.9);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.footer-dark-link:hover {
+  color: #f5f0e8;
+  border-bottom-color: rgba(196, 164, 132, 0.5);
+}
+
+.footer-dark-signature {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: rgba(180, 172, 160, 0.75);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
