@@ -6,6 +6,8 @@ import { getProductById, getProducts } from "../../lib/data";
 import ProductGallery from "../../components/ProductGallery";
 import ProductActions from "../../components/ProductActions";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = {
   params: Promise<{ id: string }>;
 };
